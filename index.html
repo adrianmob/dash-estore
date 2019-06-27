@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>El estor</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+<body onload="initMapa()">
+
+    <div class="contenedor">
+        <div class="menu">
+            <h3 class="titulo">Realizar un pedido</h3>
+            <div class="formulario">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="nomOri" type="text" class="validate">
+                        <label for="nomOri">Nombre (origen)</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="telOri" type="number" class="validate">
+                        <label for="telOri">Telefono (origen)</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col s12">
+                            <input id="dirOri" data-target="modal1" class="modal-trigger" type="text" class="validate">
+                            <label for="dirOri">Direccion (origen)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <input id="refOri" type="text" class="validate">
+                                    <label for="refOri">¿Alguna referencia?</label>
+                                </div>
+                            <div class="input-field col s6">
+                                <input id="tipServ" type="text" class="validate">
+                                <label for="tipServ">Tipo servicio</label>
+                            </div>
+                            
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <input id="compra" type="text" class="validate">
+                                    <label for="compra">¿Que compra, envia?</label>
+                                </div>
+                            <div class="input-field col s6">
+                                <input id="monto" type="text" class="validate">
+                                <label for="monto">Monto de la compra</label>
+                            </div>
+                            
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <input id="nomDes" type="text" class="validate">
+                                    <label for="nomDes">Nombre (destino)</label>
+                                </div>
+                            <div class="input-field col s6">
+                                <input id="telDes" type="number" class="validate">
+                                <label for="telDes">Telefono (destino)</label>
+                            </div>
+                            
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s12">
+                                    <input id="dirDes" type="text" class="validate">
+                                    <label for="dirDes">Dirección (destino)</label>
+                                </div>
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                <input id="refDis" type="text" class="validate">
+                                <label for="refDis">¿Alguna referencia?</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="km" type="text" class="validate">
+                                <label for="km">KM</label>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                <input id="envio" type="number" class="validate">
+                                <label for="envio">costo de envio</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="pagaQuien" type="text" class="validate">
+                                <label for="pagaQuien">¿Quien paga?</label>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s12">
+                                <input id="instruccion" type="text" class="validate">
+                                <label for="instruccion">Instrucción del pedido</label>
+                            </div>
+                            
+                        </div>
+                        <a onclick="repartidor()" class="waves-effect waves-light btn boton">Solicitar Repartidor</a>
+            </div>
+        </div>
+        <div class="principal">
+        
+            <div id="mapa">
+    
+            </div>
+    
+        </div>
+
+    </div>
+
+    <!-- Modal
+
+    <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Agregar direccion</h4>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+          </div> -->
+                  
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBBpfZ5-RiG2fGwpWFCSimR2CFtXXnTGJI",
+            authDomain: "el-estor.firebaseapp.com",
+            databaseURL: "https://el-estor.firebaseio.com",
+            projectId: "el-estor",
+            storageBucket: "el-estor.appspot.com",
+            messagingSenderId: "524940257833",
+            appId: "1:524940257833:web:c54ca1c9550dc4c9"
+            };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <script src="js/mapa.js"></script>
+    <script src="js/repartidores.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFp-V89r2lYDTrvFf0wfEb0qT5ceJ76NM&libraries=places" async defer></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!-- Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    
+</body>
+</html>
