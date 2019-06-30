@@ -23,6 +23,8 @@ var coordsDestino = {
     
       });
 
+      var pinOri, pinDest;
+
       repartidoresListen();
     
       var element = document.getElementById("dirOri");
@@ -40,12 +42,28 @@ var coordsDestino = {
 
       search.addListener('place_changed', function() {
         var place = search.getPlace();
+        pinOri = new google.maps.Marker({
+          position: new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()),
+          map: map,
+          draggable: true,
+          animation: google.maps.Animation.DROP
+      });
         origen = place.geometry.location;
         coordsOrigen.lat = place.geometry.location.lat();
         coordsOrigen.lng = place.geometry.location.lng();
         if(destino){
           obtenerDistancia(origen,destino);
         }
+        pinOri.addListener("dragend", function(event) {
+          origen = event.latLng;
+          coordsOrigen.lat = event.latLng.lat();
+          coordsOrigen.lng = event.latLng.lng();
+          if(destino){
+            obtenerDistancia(origen,destino);
+    
+          }
+    
+      });
         // map.panTo(place.geometry.location);
         // pin.setPosition(place.geometry.location);
         // $('#lat').val(place.geometry.location.lat());
@@ -54,6 +72,12 @@ var coordsDestino = {
 
     search2.addListener('place_changed', function() {
       var place = search2.getPlace();
+      pinDest = new google.maps.Marker({
+        position: new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()),
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+    });
       destino = place.geometry.location;
       coordsDestino.lat = place.geometry.location.lat();
       coordsDestino.lng = place.geometry.location.lng();
@@ -61,11 +85,25 @@ var coordsDestino = {
         obtenerDistancia(origen,destino);
 
       }
+
+
+  pinDest.addListener("dragend", function(event) {
+    destino = event.latLng;
+    coordsDestino.lat = event.latLng.lat();
+    coordsDestino.lng = event.latLng.lng();
+    if(origen){
+      obtenerDistancia(origen,destino);
+
+    } 
+
+  });
       // map.panTo(place.geometry.location);
       // pin.setPosition(place.geometry.location);
       // $('#lat').val(place.geometry.location.lat());
       // $('#long').val(place.geometry.location.lng());
   });
+
+ 
   
     }
 
@@ -143,6 +181,8 @@ var coordsDestino = {
       // }
       if(campo){
         var peticion = {
+          status: "1",
+          tipo: "dash",
           nomOri: form[0].value,
           telOri: form[1].value,
           dirOri:{
@@ -187,7 +227,11 @@ var coordsDestino = {
             }
           });
           console.log(menor);
-          console.log(key);        
+          console.log(key);
+          firebase.database().ref('pedidos/' + key).set(peticion);
+          firebase.database().ref('pedidos/' + key).on('value', function(data) {
+            console.log(data.val());
+          });     
         });
       }
     }

@@ -2,7 +2,7 @@ var markadores = {};
 var posiciones = [];
 function repartidoresListen(){
     firebase.database().ref('ubicacion/').on('value', function(data) {
-       var image = "https://static.thenounproject.com/png/1576913-200.png";
+       var image = "./assets/moto.png";
           
        for (const key in data.val()) {
             if(markadores.hasOwnProperty(key)){
