@@ -42,6 +42,9 @@ var coordsDestino = {
 
       search.addListener('place_changed', function() {
         var place = search.getPlace();
+        if(pinOri){
+          pinOri.setMap(null);
+        }
         pinOri = new google.maps.Marker({
           position: new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()),
           map: map,
@@ -72,6 +75,9 @@ var coordsDestino = {
 
     search2.addListener('place_changed', function() {
       var place = search2.getPlace();
+      if(pinDest){
+        pinDest.setMap(null);
+      }
       pinDest = new google.maps.Marker({
         position: new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()),
         map: map,
@@ -181,7 +187,7 @@ var coordsDestino = {
       // }
       if(campo){
         var peticion = {
-          status: "1",
+          status: 1,
           tipo: "dash",
           nomOri: form[0].value,
           telOri: form[1].value,
@@ -228,7 +234,7 @@ var coordsDestino = {
           });
           console.log(menor);
           console.log(key);
-          firebase.database().ref('pedidos/' + key).set(peticion);
+          firebase.database().ref('pedidos/' + key).push(peticion);
           firebase.database().ref('pedidos/' + key).on('value', function(data) {
             console.log(data.val());
           });     
