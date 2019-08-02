@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.modal');
   var instances = M.Modal.init(elems);
+
+  var tabs = document.querySelectorAll('.tabs');
+  var instTabs = M.Tabs.init(tabs);
+
   
   
 });
@@ -26,6 +30,8 @@ var coordsDestino = {
       var pinOri, pinDest;
 
       repartidoresListen();
+
+      historial();
     
       var element = document.getElementById("dirOri");
       var element2 = document.getElementById("dirDes");
@@ -167,7 +173,7 @@ var coordsDestino = {
 
     }
 
-    function repartidor(){
+    function reparto(){
       var form = document.getElementsByTagName("input");
       var campo = true;
       // for (var index = 0; index < form.length; index++) {
@@ -186,8 +192,10 @@ var coordsDestino = {
         
       // }
       if(campo){
+        var hora = Date.now();
         var peticion = {
           status: 1,
+          fecha_realizacion: hora,
           tipo: "dash",
           nomOri: form[0].value,
           telOri: form[1].value,
@@ -214,6 +222,8 @@ var coordsDestino = {
           instruccion: form[14].value
         };
 
+        console.log(posiciones);
+
         var distancias = this.getAllDistance(posiciones,coordsOrigen);
         distancias.then(data=>{
           let menor = 0;
@@ -234,7 +244,12 @@ var coordsDestino = {
           });
           console.log(menor);
           console.log(key);
-          firebase.database().ref('pedidos/' + key).push(peticion);
+          firebase.database().ref('pedidos/' + key).set(peticion);
+          Swal.fire(
+            '!Muy Bien!',
+            'Se ha enviado el pedido al repartidor.',
+            'success'
+          );
           firebase.database().ref('pedidos/' + key).on('value', function(data) {
             console.log(data.val());
           });     

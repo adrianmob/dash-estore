@@ -17,6 +17,9 @@ body,html{
     box-shadow: -5px 0px 20px 0px #a0a0a0;
     overflow: scroll;
 }
+.tab{
+    padding: 0!important;
+}
 .titulo{
     font-size: 2rem;
     padding: 5px 20px;
@@ -35,3 +38,58 @@ body,html{
       margin: 20px auto;
       display: block;
   }
+
+  #toast-container{
+    top: 87%;
+    right: unset;
+    left: 2%;
+    max-width: 86%;
+  }
+
+  .toast{
+      background-color: rgb(245, 245, 245);
+      color: rgb(32, 32, 32);
+      border-radius: 10px;
+  }
+
+  #test3{
+      padding: 0;
+  }
+
+  .fecha-texto{
+    padding: 20px;
+    background-color: #e2e2e2;
+    margin: 0;
+}
+
+.pedido{
+    display: flex;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.info{
+    margin-left: 35px;
+
+}
+
+.fecha .pedido:last-child{
+    border-bottom: none;
+}
+
+.hora-texto{
+    font-size: 1.15rem;
+}
+
+.monto-texto, .tipo-texto{
+    font-size: 1.3rem;
+}
+
+.monto-texto{
+    margin-bottom: 8px;
+}
+
+.tipo-texto{
+    margin: 5px 0;
+}
+

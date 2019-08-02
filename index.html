@@ -14,91 +14,160 @@
 
     <div class="contenedor">
         <div class="menu">
-            <h3 class="titulo">Realizar un pedido</h3>
-            <div class="formulario">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="nomOri" type="text" class="validate">
-                        <label for="nomOri">Nombre (origen)</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="telOri" type="number" class="validate">
-                        <label for="telOri">Telefono (origen)</label>
+            <div class="row">
+                <div class="col s12 tab">
+                    <ul class="tabs">
+                        <li class="tab col s4"><a class="active" href="#test1">Pedido</a></li>
+                        <li class="tab col s4"><a href="#test2">Repartidores</a></li>
+                        <li class="tab col s4"><a href="#test3">Historial</a></li>
+                    </ul>
+                </div>
+                <div id="test1" class="col s12">
+                        <h3 class="titulo">Realizar un pedido</h3>
+                        <div class="formulario">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="nomOri" type="text" class="validate">
+                                    <label for="nomOri">Nombre (origen)</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="telOri" type="number" class="validate">
+                                    <label for="telOri">Telefono (origen)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="dirOri" data-target="modal1" class="modal-trigger" type="text" class="validate">
+                                        <label for="dirOri">Direccion (origen)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                <input id="refOri" type="text" class="validate">
+                                                <label for="refOri">¿Alguna referencia?</label>
+                                            </div>
+                                        <div class="input-field col s6">
+                                            <input id="tipServ" type="text" class="validate">
+                                            <label for="tipServ">Tipo servicio</label>
+                                        </div>
+                                        
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                <input id="compra" type="text" class="validate">
+                                                <label for="compra">¿Que compra, envia?</label>
+                                            </div>
+                                        <div class="input-field col s6">
+                                            <input id="monto" type="text" class="validate">
+                                            <label for="monto">Monto de la compra</label>
+                                        </div>
+                                        
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                <input id="nomDes" type="text" class="validate">
+                                                <label for="nomDes">Nombre (destino)</label>
+                                            </div>
+                                        <div class="input-field col s6">
+                                            <input id="telDes" type="number" class="validate">
+                                            <label for="telDes">Telefono (destino)</label>
+                                        </div>
+                                        
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s12">
+                                                <input id="dirDes" type="text" class="validate">
+                                                <label for="dirDes">Dirección (destino)</label>
+                                            </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="refDis" type="text" class="validate">
+                                            <label for="refDis">¿Alguna referencia?</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="km" type="text" class="validate">
+                                            <label for="km">KM</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="envio" type="number" class="validate">
+                                            <label for="envio">costo de envio</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="pagaQuien" type="text" class="validate">
+                                            <label for="pagaQuien">¿Quien paga?</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="instruccion" type="text" class="validate">
+                                            <label for="instruccion">Instrucción del pedido</label>
+                                        </div>
+                                        
+                                    </div>
+                                    <a onclick="reparto()" class="waves-effect waves-light btn boton">Solicitar Repartidor</a>
+                        </div>
+                </div>
+                <div id="test2" class="col s12">
+                    <h3 class="titulo">Agregar Repartidor</h3>
+                    <div class="formulario">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="apellidoPat" type="text" class="validate">
+                                <label for="apellidoPat">Apellido Paterno</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="apellidoMat" type="text" class="validate">
+                                <label for="apellidoMat">Apellido Materno</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="nombre" type="text" class="validate">
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="correo" type="email" class="validate">
+                                <label for="correo">correo</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="password" type="password" class="validate" onchange="igualPass()">
+                                <label for="password">contraseña</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="password2" type="password" class="validate" onchange="igualPass()">
+                                <label for="password2">repetir contraseña</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input class="inpRep" id="numeroTelefonico" type="number" class="validate">
+                                <label for="numeroTelefonico">Número telefonico</label>
+                            </div>
+                        </div>
+                        <a onclick="repartidor()" class="waves-effect waves-light btn boton">Agregar Repartidor</a>
                     </div>
                 </div>
-                <div class="row">
-                        <div class="input-field col s12">
-                            <input id="dirOri" data-target="modal1" class="modal-trigger" type="text" class="validate">
-                            <label for="dirOri">Direccion (origen)</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s6">
-                                    <input id="refOri" type="text" class="validate">
-                                    <label for="refOri">¿Alguna referencia?</label>
-                                </div>
-                            <div class="input-field col s6">
-                                <input id="tipServ" type="text" class="validate">
-                                <label for="tipServ">Tipo servicio</label>
+                <div id="test3" class="col s12">
+                    
+                    <!-- <div class="fecha">
+                        <p class="fecha-texto">1 de Agosto</p>
+                        <div class="pedido">
+                            <div class="hora">
+                                <p class="hora-texto">2:00 P.M.</p>
                             </div>
-                            
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s6">
-                                    <input id="compra" type="text" class="validate">
-                                    <label for="compra">¿Que compra, envia?</label>
-                                </div>
-                            <div class="input-field col s6">
-                                <input id="monto" type="text" class="validate">
-                                <label for="monto">Monto de la compra</label>
+                            <div class="info">
+                                <p class="monto-texto">$50.00</p>
+                                <p class="tipo-texto">Dash</p>
                             </div>
-                            
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s6">
-                                    <input id="nomDes" type="text" class="validate">
-                                    <label for="nomDes">Nombre (destino)</label>
-                                </div>
-                            <div class="input-field col s6">
-                                <input id="telDes" type="number" class="validate">
-                                <label for="telDes">Telefono (destino)</label>
-                            </div>
-                            
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s12">
-                                    <input id="dirDes" type="text" class="validate">
-                                    <label for="dirDes">Dirección (destino)</label>
-                                </div>
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s6">
-                                <input id="refDis" type="text" class="validate">
-                                <label for="refDis">¿Alguna referencia?</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="km" type="text" class="validate">
-                                <label for="km">KM</label>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s6">
-                                <input id="envio" type="number" class="validate">
-                                <label for="envio">costo de envio</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="pagaQuien" type="text" class="validate">
-                                <label for="pagaQuien">¿Quien paga?</label>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="input-field col s12">
-                                <input id="instruccion" type="text" class="validate">
-                                <label for="instruccion">Instrucción del pedido</label>
-                            </div>
-                            
-                        </div>
-                        <a onclick="repartidor()" class="waves-effect waves-light btn boton">Solicitar Repartidor</a>
+                        
+                        </div>    
+                    </div> -->
+                </div>
             </div>
         </div>
         <div class="principal">
@@ -139,6 +208,7 @@
     
     <script src="js/mapa.js"></script>
     <script src="js/repartidores.js"></script>
+    <script src="js/historial.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFp-V89r2lYDTrvFf0wfEb0qT5ceJ76NM&libraries=places" async defer></script>
 
     <!-- Compiled and minified JavaScript -->
